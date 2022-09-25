@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    /* outline: 1px solid; */
+}
+
+.App{
+    display: flex;
+    justify-content: space-between;
+}
+
+.listado__estaciones, .resumen__empresas{
+    width: 50%;
+}
+
+.animation__gif{
+    position: fixed;
+}
