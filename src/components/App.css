@@ -4,13 +4,25 @@
     /* outline: 1px solid; */
 }
 
-.App{
+.content{
     display: flex;
     justify-content: space-between;
 }
 
 .listado__estaciones, .resumen__empresas{
     width: 50%;
+}
+
+
+.listado__estaciones{
+    max-height: 1000px;
+    position:fixed;
+    right: 0;
+    overflow: scroll;
+}
+
+.listado{
+    width: 500px;
 }
 
 .animation__gif{
