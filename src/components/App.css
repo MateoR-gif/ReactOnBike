@@ -1,7 +1,14 @@
 *{
     margin: 0;
     box-sizing: border-box;
-    /* outline: 1px solid; */
+}
+
+.loading__gif{
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .content{
@@ -9,22 +16,31 @@
     justify-content: space-between;
 }
 
-.listado__estaciones, .resumen__empresas{
-    width: 50%;
-}
-
 
 .listado__estaciones{
-    max-height: 1000px;
+    width: 50%;
+    background-color: rgb(226, 226, 226);
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
     position:fixed;
-    right: 0;
-    overflow: scroll;
+    padding-top: 20px;
+    overflow-y: scroll;
+}
+
+.resumen__empresas{
+    max-height: 100vh;
+    width: 50%;
+    position: fixed;
+    right:0;
+    overflow-y: scroll;
 }
 
 .listado{
     width: 500px;
 }
 
-.animation__gif{
-    position: fixed;
+.animation__gif__div{
+    height: 100vh;
 }

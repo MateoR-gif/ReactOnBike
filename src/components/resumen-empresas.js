@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react"
 import { Accordion, Button, Card } from "react-bootstrap"
-import AccordionBody from "react-bootstrap/esm/AccordionBody"
-import AccordionHeader from "react-bootstrap/esm/AccordionHeader"
-import AccordionItem from "react-bootstrap/esm/AccordionItem"
 import Loading from "./loading"
 import ListadoEstaciones from "./listado-estaciones"
 import './App.css'
+import ReactCountryFlag from "react-country-flag"
 
 function ResumenEmpresas() {
 
@@ -26,7 +24,6 @@ function ResumenEmpresas() {
 
         setNetworks(response.networks)
         setIsLoading(false)
-        console.log(response.networks)
     }
 
     const fetchData2 = async (href) => {
@@ -41,8 +38,9 @@ function ResumenEmpresas() {
 
     if (isLoading) {
         return (
-            <div>
+            <div className="loading__gif">
                 <Loading></Loading>
+                <h1>Cargando...</h1>
             </div>
         )
     }
@@ -50,24 +48,24 @@ function ResumenEmpresas() {
         <div className="content">
             <ListadoEstaciones data={networkInfo} />
             <div className="resumen__empresas">
-                {networks.map(network => {
+                {networks.map((network, index) => {
                     return (
                         <div key={network.id}>
-                            <Accordion className="accordion" defaultActiveKey="0">
+                            <Accordion className="accordion" defaultActiveKey={0}>
                                 <center>
-                                    <AccordionItem className="accordion__item">
-                                        <AccordionHeader>{network.company} ({network.location.city})</AccordionHeader>
-                                        <AccordionBody>
+                                    <Accordion.Item eventKey={index} className="accordion__item">
+                                        <Accordion.Header>{network.company} ({network.location.city})</Accordion.Header>
+                                        <Accordion.Body>
                                             <Card>
                                                 <Card.Title>Información</Card.Title>
                                                 <Card.Text>Nombre de la Red: {network.name}</Card.Text>
                                                 <Card.Text>Nombre de la Empresa: {network.company}</Card.Text>
-                                                <Card.Text>País: {network.location.country}</Card.Text>
+                                                <Card.Text>País: {network.location.country} <ReactCountryFlag countryCode={network.location.country} svg/></Card.Text>
                                             </Card>
                                             <br></br>
                                             <Button onClick={() => fetchData2(network.href)}>Mostrar Estaciones</Button>
-                                        </AccordionBody>
-                                    </AccordionItem>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
                                 </center>
                             </Accordion>
                         </div>

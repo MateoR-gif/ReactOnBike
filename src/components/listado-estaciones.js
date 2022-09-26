@@ -4,6 +4,7 @@ import Loading from './loading'
 
 
 function ListadoEstaciones({ data }) {
+
     const [isLoading, setIsLoading] = useState(true)
     const [stations, setStations] = useState([])
 
@@ -12,16 +13,17 @@ function ListadoEstaciones({ data }) {
             setIsLoading(true)
         } else {
             setStations(data.stations)
-            console.log(stations)
+            console.log(data)
             setIsLoading(false)
         }
-    }, [data.length, data.stations, stations])
+    }, [data, data.length, data.stations, stations])
 
 
     if (isLoading) {
         return (
             <div className='listado__estaciones'>
                 <Loading></Loading>
+                <h1>Elige una de nuestras Compañías...</h1>
             </div>
         )
     }
