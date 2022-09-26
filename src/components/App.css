@@ -5,6 +5,7 @@
 
 .loading__gif{
     max-height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,7 +24,22 @@
     min-height: 100vh;
     max-height: 100vh;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    position:fixed;
+    padding-top: 20px;
+    overflow-y: scroll;
+}
+
+.listado__loading{
+    width: 50%;
+    background-color: rgb(226, 226, 226);
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     position:fixed;
     padding-top: 20px;
     overflow-y: scroll;
@@ -41,6 +57,3 @@
     width: 500px;
 }
 
-.animation__gif__div{
-    height: 100vh;
-}

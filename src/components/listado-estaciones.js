@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Card } from 'react-bootstrap'
 import Loading from './loading'
 
-
 function ListadoEstaciones({ data }) {
 
     const [isLoading, setIsLoading] = useState(true)
@@ -21,9 +20,9 @@ function ListadoEstaciones({ data }) {
 
     if (isLoading) {
         return (
-            <div className='listado__estaciones'>
+            <div className='listado__loading'>
                 <Loading></Loading>
-                <h1>Elige una de nuestras Compañías...</h1>
+                <h1>Elige una de nuestras compañías...</h1>
             </div>
         )
     }
@@ -33,12 +32,12 @@ function ListadoEstaciones({ data }) {
                 {stations.map(station => {
                     return (
                         <div className='listado' key={station.id}>
-                            <Card>
+                            <Card className='p-1'>
+                                <Card.Title>Estación</Card.Title>
                                 <Card.Title>{station.name}</Card.Title>
                                 <Card.Text>Bicicicletas Libres: {station.free_bikes}</Card.Text>
                                 <Card.Text>Espacios Libres: {station.empty_slots}</Card.Text>
                                 <Card.Text>Última Actualización: {station.timestamp}</Card.Text>
-                                <Card.Text></Card.Text>
                             </Card>
                             <br></br>
                         </div>
