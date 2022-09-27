@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Accordion, Button, Card } from "react-bootstrap"
+import { Accordion, Button, Card, ListGroup } from "react-bootstrap"
 import Loading from "./loading"
 import ListadoEstaciones from "./listado-estaciones"
 import './App.css'
@@ -27,13 +27,11 @@ function ResumenEmpresas() {
     }
 
     const fetchData2 = async (href) => {
-        let url2 = `http://api.citybik.es${href}`
-        const response = await fetch(url2, { method: 'GET' })
+        let redirect = `http://api.citybik.es${href}`
+        const response = await fetch(redirect, { method: 'GET' })
             .then(response => response.json())
             .catch(error => console.log(error))
-        console.log(href)
         setNetworkInfo(response.network)
-        console.log(response.network)
     }
 
     if (isLoading) {
@@ -56,11 +54,13 @@ function ResumenEmpresas() {
                                     <Accordion.Item eventKey={index} className="accordion__item">
                                         <Accordion.Header>{network.company} ({network.location.city})</Accordion.Header>
                                         <Accordion.Body>
-                                            <Card>
-                                                <Card.Title>Información</Card.Title>
-                                                <Card.Text>Nombre de la Red: {network.name}</Card.Text>
-                                                <Card.Text>Nombre de la Empresa: {network.company}</Card.Text>
-                                                <Card.Text>País: {network.location.country} <ReactCountryFlag countryCode={network.location.country} svg/></Card.Text>
+                                            <Card className="network__card">
+                                                <Card.Header>Información</Card.Header>
+                                                <ListGroup>
+                                                    <ListGroup.Item>País: {network.location.country} <ReactCountryFlag countryCode={network.location.country} svg /></ListGroup.Item>
+                                                    <ListGroup.Item><span className="blue">Nombre de la Red: {network.name}</span></ListGroup.Item>
+                                                    <ListGroup.Item>Nombre de la Empresa: {network.company}</ListGroup.Item>
+                                                </ListGroup>
                                             </Card>
                                             <br></br>
                                             <Button onClick={() => fetchData2(network.href)}>Mostrar Estaciones</Button>

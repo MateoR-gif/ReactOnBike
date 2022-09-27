@@ -53,7 +53,27 @@
     overflow-y: scroll;
 }
 
-.listado{
+.station__card{
+    width: 350px;
+}
+
+.network__card{
     width: 500px;
+}
+
+
+.green{
+    color: green;
+    font-weight: bold;
+}
+
+.button__toast{
+    position: fixed;
+    left: 16px;
+}
+
+.blue{
+    color: rgb(49, 119, 177);
+    font-weight: bold;
 }
 
