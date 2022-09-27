@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Card, Toast, ToastContainer, Button } from 'react-bootstrap'
 import Loading from './loading'
 
@@ -11,17 +11,7 @@ function ListadoEstaciones({ data }) {
     const [all_empty_slots, setAllES] = useState()
     const nullMsg = "Sin Info"
 
-    useEffect(() => {
-        if (data.length === 0) {
-            setIsLoading(true)
-        } else {
-            setStations(data.stations)
-            handleCount()
-            setIsLoading(false)
-        }
-    }, [data, stations])
-
-    const handleCount = () => {
+    const handleCount = useCallback(() => {
         var temp_stations = stations
         var all_empty_slots = 0
         var all_free_bikes = 0
@@ -31,7 +21,17 @@ function ListadoEstaciones({ data }) {
         }
         setAllFB(all_free_bikes)
         setAllES(all_empty_slots)
-    }
+    }, [stations]);
+
+    useEffect(() => {
+        if (data.length === 0) {
+            setIsLoading(true)
+        } else {
+            setStations(data.stations)
+            handleCount()
+            setIsLoading(false)
+        }
+    }, [data, stations, handleCount])
 
     if (isLoading) {
         return (
