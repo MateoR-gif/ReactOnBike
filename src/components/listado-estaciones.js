@@ -38,6 +38,7 @@ function ListadoEstaciones({ data }) {
             <div className='listado__loading'>
                 <Loading></Loading>
                 <h1>Elige una de nuestras compañías...</h1>
+                <h5>Ctrl + F para buscar tu ciudad.</h5>
             </div>
         )
     }
@@ -45,17 +46,18 @@ function ListadoEstaciones({ data }) {
         return (
             <div className='listado__loading'>
                 <Loading></Loading>
-                <h1>No se encontraron estaciones</h1>
+                <h1>No se encontraron estaciones :(</h1>
+                <h5>Ctrl + F para buscar tu ciudad.</h5>
             </div>
         )
     }
     return (
         <div className='listado__estaciones'>
-            <Button onClick={() => setShow(true)} position="top-start" className="button__toast">Info.</Button>
+            <Button onClick={() => setShow(true)} position="top-start"  className="button__toast">Detalles Generales</Button>
             <ToastContainer position="top-start" className="position-fixed p-3">
                 <Toast onClose={() => setShow(false)} show={show}>
                     <Toast.Header>
-                        <strong className="me-auto">{data.company}</strong>
+                        <strong className="me-auto"><strong>{data.name} ({data.location.city})</strong></strong>
                     </Toast.Header>
                     <Toast.Body >
                         <center>
@@ -75,9 +77,9 @@ function ListadoEstaciones({ data }) {
                             <Card className='station__card position-static'>
                                 <Card.Header><i>Estación</i></Card.Header>
                                 <Card.Title>{station.name}</Card.Title>
-                                <Card.Text><span className="green">Total de Espacios: {all_slots}</span></Card.Text>
-                                <Card.Text>Bicicicletas Libres: {station.free_bikes === null ? nullMsg : station.free_bikes}</Card.Text>
-                                <Card.Text>Espacios Libres: {station.empty_slots === null ? nullMsg : station.empty_slots}</Card.Text>
+                                <Card.Text className="red">Total de Espacios: {all_slots}</Card.Text>
+                                <Card.Text className='green'>Espacios Libres: {station.empty_slots === null ? nullMsg : station.empty_slots}</Card.Text>
+                                <Card.Text className='blue'>Bicicicletas Libres: {station.free_bikes === null ? nullMsg : station.free_bikes}</Card.Text>
                                 <Card.Footer>Última Actualización: {station.timestamp}</Card.Footer>
                             </Card>
                             <br></br>

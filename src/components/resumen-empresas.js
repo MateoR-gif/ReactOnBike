@@ -11,6 +11,7 @@ function ResumenEmpresas() {
     const [networkInfo, setNetworkInfo] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const url = "http://api.citybik.es/v2/networks"
+    const nullMsg = "Sin Info"
 
     useEffect(() => {
         fetchData()
@@ -58,8 +59,8 @@ function ResumenEmpresas() {
                                                 <Card.Header>Información</Card.Header>
                                                 <ListGroup>
                                                     <ListGroup.Item>País: {network.location.country} <ReactCountryFlag countryCode={network.location.country} svg /></ListGroup.Item>
-                                                    <ListGroup.Item><span className="blue">Nombre de la Red: {network.name}</span></ListGroup.Item>
-                                                    <ListGroup.Item>Nombre de la Empresa: {network.company}</ListGroup.Item>
+                                                    <ListGroup.Item><span className="red">Nombre de la Red: {network.name}</span></ListGroup.Item>
+                                                    <ListGroup.Item>Nombre de la Empresa: {network.company ? network.company : nullMsg}</ListGroup.Item>
                                                 </ListGroup>
                                             </Card>
                                             <br></br>
