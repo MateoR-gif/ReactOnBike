@@ -1,6 +1,7 @@
 *{
     margin: 0;
     box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .loading__gif{
@@ -59,6 +60,7 @@
 
 .network__card{
     width: 500px;
+    max-width: 100%;
 }
 
 
@@ -80,5 +82,30 @@
 .red{
     color: rgb(177, 74, 79);
     font-weight: bold;
+}
+
+@media (max-width: 1080px) {
+
+    .listado__loading, .listado__estaciones{
+        width: 100%;
+    }
+
+    .resumen__empresas{
+        width: 10%;
+        transition: all 1s;
+    }
+
+    .toast-container{
+        width: 300px;
+    }
+
+    .help__msg{
+        visibility: hidden;
+    }
+
+    .resumen__empresas:hover{
+        width: 50%;
+        transition: all 1s;
+    }
 }
 

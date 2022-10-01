@@ -37,8 +37,8 @@ function ListadoEstaciones({ data }) {
         return (
             <div className='listado__loading'>
                 <Loading></Loading>
-                <h1>Elige una de nuestras compañías...</h1>
-                <h5>Ctrl + F para buscar tu ciudad.</h5>
+                <h2>Elige una de nuestras compañías -{'>'}</h2>
+                <h5 className='help__msg'>Ctrl + F para buscar tu ciudad.</h5>
             </div>
         )
     }
@@ -46,8 +46,8 @@ function ListadoEstaciones({ data }) {
         return (
             <div className='listado__loading'>
                 <Loading></Loading>
-                <h1>No se encontraron estaciones :(</h1>
-                <h5>Ctrl + F para buscar tu ciudad.</h5>
+                <h2>No se encontraron estaciones :(</h2>
+                <h5 className='help__msg'>Ctrl + F para buscar tu ciudad.</h5>
             </div>
         )
     }

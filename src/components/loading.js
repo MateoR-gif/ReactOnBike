@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
-import loadingAnimation from "./bikeAnimation.gif"
+import loading from "./media/bikeAnimation.gif"
 
 function Loading({ text }) {
   return (
     <div className="animation__gif__div">
       <Fragment>
-          <img className="animation__gif" src={loadingAnimation} alt="Cargando..."></img>
+          <img className="animation__gif" src={loading} alt="Cargando..."></img>
           <span>{text}</span>
       </Fragment>
     </div>
